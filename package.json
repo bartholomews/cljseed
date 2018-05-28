@@ -1,0 +1,17 @@
+{
+  "name": "generator-cljseed",
+  "version": "0.1.0",
+  "description": "Yeoman generator for clojurescript with figwheel seed",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "bartholomews",
+  "license": "MIT",
+  "dependencies": {
+    "underscore.string": "^3.3.4",
+    "yeoman-generator": "^2.0.5"
+  }
+}
