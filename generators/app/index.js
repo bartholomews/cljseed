@@ -30,6 +30,12 @@ module.exports = class extends Generator {
       this.destinationPath(to), opts)
   }
 
+  srcTemplatePaths(app_name) {
+    const src = `${app_name}/src`;
+    const app = underscored(app_name);
+    return [`${src}/clj/${app}`, `${src}/cljs/${app}`]
+  }
+
   go() {
     this.prompt([this._setProject()]).then((answers) => {
       const app_name = answers['project-name'];
@@ -37,11 +43,12 @@ module.exports = class extends Generator {
         app_name: app_name,
         app_path: `${slugify(app_name)}`
       };
-      const src_path = `${app_name}/src/${underscored(app_name)}`;
+      const [clj, cljs] = this.srcTemplatePaths(app_name);
       this.log(answers);
       this._write('project.clj', `${app_name}/project.clj`, opts);
       this._write('assets', app_name, opts);
-      this._write('src', src_path, opts);
+      this._write('src/clj', clj, opts);
+      this._write('src/cljs', cljs, opts);
     });
   }
 };
