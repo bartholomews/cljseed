@@ -6,71 +6,85 @@ const underscored = require("underscore.string/underscored");
 
 const Generator = require('yeoman-generator');
 
-module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-  }
+function random(max) {
+    return  Math.floor(Math.random() * Math.floor(max))
+}
 
-  _setProject() {
-    return [{
-        type: 'input',
-        name: 'project-name',
-        message: 'Enter your project name',
-        default: 'hello-seymore'
-      },
-      {
-        type: 'input',
-        name: 'project-version',
-        message: 'Enter the project version',
-        default: '0.1.0-SNAPSHOT'
-      }
-    ]
-  }
-
-  _copy(appName, from, to, opts) {
-    this.fs.copy(
-      this.templatePath(from),
-      this.destinationPath(to), opts)
-  }
-
-  _write(from, to, opts) {
-    this.fs.copyTpl(
-      this.templatePath(from),
-      this.destinationPath(to), opts)
-  }
-
-  srcTemplatePaths(app_name) {
+function srcTemplatePaths(app_name) {
     const src = `${app_name}/src`;
     const app = underscored(app_name);
     return [`${src}/clj/${app}`, `${src}/cljs/${app}`]
-  }
+}
 
-  go() {
-    this.prompt(this._setProject()).then((answers) => {
-      const app_name = answers['project-name'];
-      const app_version = answers['project-version'];
-      const opts = {
-        app_name: app_name,
-        version: app_version,
-        app_path: `${slugify(app_name)}`
-      };
-      const [clj, cljs] = this.srcTemplatePaths(app_name);
-      this._write('project.clj', `${app_name}/project.clj`, opts);
-      this._write('assets', app_name, opts);
-      this._write('src/clj', clj, opts);
-      this._write('src/cljs', cljs, opts);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+        this.argument('app_name', {type: String, required: false});
+    }
 
-      this.log(chalk.bold.green(`${app_name} created succesfully.`));
-      this.log('To run the server, execute ' +
-        chalk.yellow('lein ring server'));
-      this.log('To run the frontend, execute ' +
-        chalk.yellow('lein figwheel'));
-      this.log('To run server and frontend on the same shell, execute ' +
-        chalk.yellow('lein cooper'));
-      this.log('To build an uberjar, execute ' +
-        chalk.yellow('lein package'));
-      this.log('To deploy to heroku, execute ' +
-        chalk.yellow(`heroku create ${app_name} && lein heroku deploy`));
-    });
-  }
+    _setProject() {
+        return [{
+            type: 'input',
+            name: 'project-name',
+            message: 'Enter your project name',
+            default: this.options.app_name || 'lisp-teapot' + random(9000)
+        },
+            {
+                type: 'input',
+                name: 'project-version',
+                message: 'Enter the project version',
+                default: '0.1.0-SNAPSHOT'
+            }
+        ]
+    }
+
+    // _copy(appName, from, to, opts) {
+    //     this.fs.copy(
+    //         this.templatePath(from),
+    //         this.destinationPath(to), opts)
+    // }
+
+    _write(from, to, opts) {
+        this.fs.copyTpl(
+            this.templatePath(from),
+            this.destinationPath(to), opts)
+    }
+
+    go() {
+        this.prompt(this._setProject()).then((answers) => {
+            const app_name = answers['project-name'];
+            const app_version = answers['project-version'];
+            const opts = {
+                app_name: app_name,
+                version: app_version,
+                app_path: `${slugify(app_name)}`
+            };
+            const [clj, cljs] = srcTemplatePaths(app_name);
+            this._write('project.clj', `${app_name}/project.clj`, opts);
+            this._write('assets', app_name, opts);
+            this._write('src/clj', clj, opts);
+            this._write('src/cljs', cljs, opts);
+
+            this.log(chalk.bold.green(`${app_name} created successfully.`));
+            this.log('Run ' + chalk.yellow(`cd ${app_name}`) + ', then you have the following commands available:');
+            this.log('To run the server, execute ' +
+                chalk.yellow('lein ring server'));
+            this.log('To run the frontend, execute ' +
+                chalk.yellow('lein figwheel'));
+            this.log('To run server and frontend on the same shell, execute ' +
+                chalk.yellow('lein cooper'));
+            this.log('To build an uberjar, execute ' + chalk.yellow('lein package'));
+            this.log('then run ' + chalk.yellow(`java -jar target/${app_name}-${app_version}-standalone.jar`));
+            this.log('To deploy the jar to heroku, execute ' + chalk.yellow(`heroku create ${app_name} && lein heroku deploy`));
+            this.log(chalk.bold.blue('Please note: ')
+                + chalk.blue('if ')
+                + chalk.bold.blue('"Name project is already taken", '));
+            this.log(chalk.blue('make sure to replace your Heroku project name in ')
+                + chalk.bold.blue('project.clj ')
+                + chalk.blue('under ')
+                + chalk.bold.blue(':heroku {:app-name ')
+                + chalk.blue('field')
+            )
+        });
+    }
 };
