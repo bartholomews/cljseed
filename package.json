@@ -9,16 +9,7 @@
   "files": [
     "generators"
   ],
-  "keywords": [
-    "yeoman-generator",
-    "clojure",
-    "clojurescript",
-    "ring",
-    "compojure",
-    "reagent",
-    "figwheel",
-    "heroku"
-  ],
+  "keywords": ["yeoman-generator"],
   "author": "bartholomews",
   "license": "MIT",
   "dependencies": {
