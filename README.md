@@ -21,17 +21,17 @@ look up the [wiki](https://github.com/technomancy/leiningen/wiki/Packaging) for 
 + [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):  
 e.g. `brew install heroku/brew/heroku`
 
-Install
+#### Install:
 ```
 npm i -g generator-cljseed
 ```
 
-Run 
+#### Run:
 ```
 yo cljseed
 ```
 
-Inside your newly generated project, you can run for example:
+Inside your newly generated project, you can run commands such as:
 + **lein figwheel** (to start the client with live reload)
 + **lein ring server** (to start the server)
 + **lein cooper** (to start both client and server in the same window)
