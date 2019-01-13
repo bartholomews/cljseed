@@ -1,6 +1,6 @@
 {
   "name": "generator-cljseed",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Yeoman starter seed for clojure + clojurescript stack",
   "repository": {
     "type": "git",
