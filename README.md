@@ -37,4 +37,4 @@ Inside your newly generated project, you can run commands such as:
 + **lein cooper** (to start both client and server in the same window)
 + **lein package**  (to build a jar)
 + **heroku create my-project && lein heroku deploy** 
-(to deploy to heroku, also you override the default region you can use the *region* flag, e.g. **heroku create --region eu my-project**)
+(to deploy to heroku, also you can override the default region, e.g. **heroku create --region eu my-project**)
