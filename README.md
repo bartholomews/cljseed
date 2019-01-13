@@ -21,16 +21,20 @@ look up the [wiki](https://github.com/technomancy/leiningen/wiki/Packaging) for 
 + [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):  
 e.g. `brew install heroku/brew/heroku`
 
+Install
+```
+npm i -g generator-cljseed
+```
+
 Run 
 ```
-npm i generator-cljseed
 yo cljseed
 ```
 
 Inside your newly generated project, you can run for example:
-+ *lein figwheel* (to start the client with live reload)
-+ *lein ring server* (to start the server)
-+ *lein cooper* (to start both client and server in the same window)
-+ *lein package*  (to build a jar)
-+ *heroku create my-project && lein heroku deploy*  
-(to deploy to heroku, also you override the default region you can use the *region* flag, e.g. *heroku create --region eu my-project*)
++ **lein figwheel** (to start the client with live reload)
++ **lein ring server** (to start the server)
++ **lein cooper** (to start both client and server in the same window)
++ **lein package**  (to build a jar)
++ **heroku create my-project && lein heroku deploy** 
+(to deploy to heroku, also you override the default region you can use the *region* flag, e.g. **heroku create --region eu my-project**)
