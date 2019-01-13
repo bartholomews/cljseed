@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/generator-cljseed.png)](https://npmjs.org/package/generator-cljseed)
+
 # generator-cljseed
 
 A Yeoman starter seed for Clojure + ClojureScript stack

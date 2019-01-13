@@ -36,13 +36,10 @@ jobs: # a collection of steps
 #    - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
 #        path: test-results.xml
     # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+    - run:
+        name: publish to npmjs.com
+        command: npm publish
 
-dependencies:
-  pre:
-  - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-
-deployment:
-  production:
-    branch: master
-    commands:
-    - npm publish
+#dependencies:
+#  pre:
+#  - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
