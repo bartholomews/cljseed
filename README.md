@@ -1,4 +1,5 @@
-[![NPM](https://nodei.co/npm/generator-cljseed.png)](https://npmjs.org/package/generator-cljseed)
+[![NPM](https://nodei.co/npm/generator-cljseed.png)](https://npmjs.org/package/generator-cljseed)   
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/bartholomews/generator-cljseed/blob/master/LICENSE)
 
 # generator-cljseed
 
@@ -40,3 +41,7 @@ Inside your newly generated project, you can run commands such as:
   - before deploying to heroku, you can override the default region with **heroku create --region eu my-project**  
   - if you get "*Name [your-project-name] is already taken*", make sure to replace your Heroku
 project name also in **project.clj** under **:heroku {:app-name** field, otherwise the deployment will fail.
+
+#### Contributing:
+
+PRs and suggestions are always welcome.
