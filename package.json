@@ -1,13 +1,23 @@
 {
   "name": "generator-cljseed",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A Yeoman starter seed for clojure + clojurescript stack",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bartholomews/generator-cljseed.git"
   },
   "files": [
-    "generators"
+    "generators",
+    "seed",
+    "starter",
+    "clojure",
+    "clojurescript",
+    "ring",
+    "compojure",
+    "reagent",
+    "react",
+    "figwheel",
+    "heroku"
   ],
   "keywords": ["yeoman-generator"],
   "author": "bartholomews",
