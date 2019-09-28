@@ -7,7 +7,7 @@ const underscored = require("underscore.string/underscored");
 const Generator = require('yeoman-generator');
 
 function random(max) {
-    return  Math.floor(Math.random() * Math.floor(max))
+    return Math.floor(Math.random() * Math.floor(max))
 }
 
 function srcTemplatePaths(app_name) {
@@ -65,7 +65,7 @@ module.exports = class extends Generator {
             this._write('src/clj', clj, opts);
             this._write('src/cljs', cljs, opts);
 
-            this.log(chalk.bold.green(`${app_name} created successfully.`));
+            this.log(chalk.bold.greenBright(`${app_name} created successfully.`));
             this.log('Run ' + chalk.yellow(`cd ${app_name}`) + ', then you have the following commands available:');
             this.log('To run the server, execute ' +
                 chalk.yellow('lein ring server'));
@@ -76,15 +76,16 @@ module.exports = class extends Generator {
             this.log('To build an uberjar, execute ' + chalk.yellow('lein package'));
             this.log('then run ' + chalk.yellow(`java -jar target/${app_name}-${app_version}-standalone.jar`));
             this.log('To deploy the jar to heroku, execute ' + chalk.yellow(`heroku create ${app_name} && lein heroku deploy`));
-            this.log(chalk.bold.blue('Please note: ')
-                + chalk.blue('if ')
-                + chalk.bold.blue('"Name project is already taken", '));
-            this.log(chalk.blue('make sure to replace your Heroku project name in ')
-                + chalk.bold.blue('project.clj ')
-                + chalk.blue('under ')
-                + chalk.bold.blue(':heroku {:app-name ')
-                + chalk.blue('field')
-            )
+            //
+            this.log(chalk.bold.cyan('Please note: ')
+                + chalk.cyan('if you get ')
+                + chalk.red(`"Name ${app_name} is already taken"`)
+                + chalk.cyan(', replace the Heroku name in ')
+                + chalk.blue('project.clj')
+                + chalk.cyan(' under ')
+                + chalk.blue(':heroku {:app-name')
+                + chalk.cyan(' field, then run the command again.')
+            );
         });
     }
 };
