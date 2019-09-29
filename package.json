@@ -1,12 +1,14 @@
 {
   "name": "generator-cljseed",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A Yeoman starter seed for clojure + clojurescript stack",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bartholomews/generator-cljseed.git"
   },
-  "files": ["generators"],
+  "files": [
+    "generators"
+  ],
   "keywords": [
     "yeoman-generator",
     "seed",
@@ -23,8 +25,9 @@
   "author": "bartholomews",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "underscore.string": "^3.3.4",
-    "yeoman-generator": "^2.0.5"
+    "chalk": "2.4.2",
+    "lodash": "4.17.15",
+    "underscore.string": "3.3.5",
+    "yeoman-generator": "4.1.0"
   }
 }

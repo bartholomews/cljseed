@@ -4,10 +4,10 @@
 # generator-cljseed
 
 A Yeoman starter seed for Clojure + ClojureScript stack
+- [figwheel-main](https://figwheel.org/) 
+- [reagent](https://github.com/reagent-project/reagent)
 - [ring](https://github.com/ring-clojure/ring) 
 - [compojure](https://github.com/weavejester/compojure)
-- [reagent](https://github.com/reagent-project/reagent)
-- [figwheel](https://github.com/bhauman/lein-figwheel) 
 - [heroku](https://github.com/heroku/lein-heroku)
 
 #### Prerequisites:
@@ -22,6 +22,9 @@ look up the [wiki](https://github.com/technomancy/leiningen/wiki/Packaging) for 
 + [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):  
 e.g. `brew install heroku/brew/heroku`
 
+Not strictly required, but you can also use:
++ [Clojure CLI](https://clojure.org/guides/getting_started#_clojure_installer_and_cli_tools)
+
 #### Install:
 ```
 npm i -g generator-cljseed
@@ -33,9 +36,8 @@ yo cljseed
 ```
 
 Inside your newly generated project, you can run commands such as:
-+ **lein figwheel** (to start the client with live reload)
-+ **lein ring server** (to start the server)
-+ **lein cooper** (to start both client and server on the same shell)
++ **lein fig:dev** (to start a ClojureScript REPL with live reload)
++ **lein fig:test** (to run tests)
 + **lein package**  (to build a jar)
 + **heroku create your-project-name && lein heroku deploy** 
   - before deploying to heroku, you can override the default region with **heroku create --region eu my-project**  
