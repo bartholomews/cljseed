@@ -3,6 +3,10 @@
 
 # generator-cljseed
 
+**This project is not maintained, you are better off using a lein template, see** https://clj-templates.com
+
+---------------------------
+
 A Yeoman starter seed for Clojure + ClojureScript stack
 - [figwheel-main](https://figwheel.org/) 
 - [reagent](https://github.com/reagent-project/reagent)
@@ -43,7 +47,3 @@ Inside your newly generated project, you can run commands such as:
   - before deploying to heroku, you can override the default region with **heroku create --region eu my-project**  
   - if you get "*Name [your-project-name] is already taken*", make sure to replace your Heroku
 project name also in **project.clj** under **:heroku {:app-name** field, otherwise the deployment will fail.
-
-#### Contributing:
-
-PRs and suggestions are always welcome.
